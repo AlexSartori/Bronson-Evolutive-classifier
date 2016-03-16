@@ -31,9 +31,9 @@ class Genome:
         else: f3 = f1[:]
 
         for i in range(random.randint(0, len(f3))):
-            if random.randint(0, 1) == 1:
+            if random.randint(0, 3) >= 1:
                 del f3[random.randint(0, len(f3) - 1)]
-            if random.randint(0, 1) == 1:
+            if random.randint(0, 3) >= 1:
                 rm = mutations[random.randint(0, len(mutations) - 1)]
                 if rm not in f3: f3.append(rm)
         return Genome(f3, 0)

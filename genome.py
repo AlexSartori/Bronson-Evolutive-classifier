@@ -18,7 +18,7 @@ class Genome:
 
     def sigma(self, other):
         a, b = self, other
-        N = max(len(a), len(b))  # len(set(a.featureset() + b.featureset()))
+        N = max(len(a.featureset()), len(b.featureset()))  # len(set(a.featureset() + b.featureset()))
         E = len(list(set(b.featureset()) - set(a.featureset())))
         D = len(list(set(a.featureset()) - set(b.featureset())))
         return float((D + E) / N)

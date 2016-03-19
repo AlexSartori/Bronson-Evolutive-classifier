@@ -18,8 +18,8 @@ names = ([(name, 'male')   for name in names.words('male.txt')] +
          [(name, 'female') for name in names.words('female.txt')])
 
 random.shuffle(names)
-test_set = names[:500]
-train_set = names[500:]
+test_set = names[:800]
+train_set = names[800:]
 
 N_GENOMI = 100
 N_GENERAZIONI = 100
@@ -32,27 +32,28 @@ averages, maxes = [], []    # Statistical data...
 # ------------------------------------------------------------------------------------------------ Genera genomi ---
 for i in range(N_GENOMI):
     fset = []
-    for j in range(random.randint(1, 10)):  # len(geni))):
+    for j in range(random.randint(1, 10)):
         index = random.randint(0, len(geni) - 1)
         if geni[index] not in fset:
             fset.append(geni[index])
     genomi.append(Genome(fset, 0))
-    # print "    Genoma %d:" % i, fset
 
 
 for n_generazione in range(1, N_GENERAZIONI + 1):
-    print "Generazione %3d: %4s" % (n_generazione, ' '),
+    print "Generation %3d: %4s" % (n_generazione, ' '),
+    random.shuffle(names)
+    test_set = names[:800]
+    train_set = names[800:]
 
     # --------------------------------------------------------------------------- Per ogni genoma calcola precisione ---
     for i, g in enumerate(genomi):
         classifier = nltk.NaiveBayesClassifier.train((get_features(n, g.featureset()), tag) for (n, tag) in train_set)
         a = float(nltk.classify.accuracy(classifier, [(get_features(n, g.featureset()), tag) for (n, tag) in test_set]))
         g.set_accuracy(float(a))
-        print "\rGenerazione %3d: %3s %3d/%3d" % (n_generazione, ' ', i + 1, N_GENOMI),
+        print "\rGeneration %3d: %3s %3d/%3d" % (n_generazione, ' ', i + 1, N_GENOMI),
         sys.stdout.flush()
-        # print "    Genoma %d:  %.3f  ->  %s" % (i, a, [f.__name__ for f in g.featureset()])
+        # print "    Genome %d:  %.3f  ->  %s" % (i, a, [f.__name__ for f in g.featureset()])
 
-    # print [g.accuracy() for g in genomi]
     averages.append(sum([g.accuracy() for g in genomi]) / N_GENOMI)
     maxes.append(max([g.accuracy() for g in genomi]))
     print "    AVG: %.3f" % averages[-1],

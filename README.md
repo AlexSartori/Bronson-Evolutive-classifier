@@ -87,6 +87,6 @@ Unfortunately, Natural Language is intrinsically ambiguous, and to make computer
 
 Perfection is never reached because no matter how extensive a feature set is, **there will always be an exception to that rule**: resuming the previous example where K-ending names are supposed to be male, Brook is not.
 
-If you're interested on the code, here's another file explaining it in detail: [CODE_DOC.md](#)
+If you're interested on the code, here's another file explaining it in detail: [CODE_DOC.md](CODE_DOC.md)
 
 *Alex Sartori*

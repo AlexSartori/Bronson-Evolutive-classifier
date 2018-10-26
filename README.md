@@ -74,7 +74,7 @@ Great! It's evolving! Will it reach 100%?
 
 Nope:
 
-![Figure_3](http://codiceloco.altervista.org/services/usercontent/chart_1.png)
+![Figure_3](https://i.imgur.com/VSOcMWS.png)
 
 It has done an amazing job for the first 10-15 generations but then... There was no feature combination that could do best than the previous, even if features where selected by "Natural Selection".
 
